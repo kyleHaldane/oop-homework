@@ -37,12 +37,12 @@ function mainApp() {
             {
                 type: "input",
                 name: "officeNumber",
-                message: "What is the managers email?"
+                message: "What is the managers office number?"
             }
         ])
         .then(answers => {
             var { name, id, email, officeNumber } = answers;
-            var manager = Manager(name, id, email, officeNumber);
+            var manager = new Manager(name, id, email, officeNumber);
             
             //Adds the managert to the team array
             teamMember.push(manager);
@@ -113,8 +113,9 @@ function getEngineer() {
         ])
         .then(answers => {
             var {name, id, email, github} = answers;
-            var engineer = Engineer(name, id, email, github);
+            var engineer = new Engineer(name, id, email, github);
             teamMember.push(engineer);
+            createTeam();
         })
 
 }
@@ -147,8 +148,9 @@ function getIntern() {
         ])
         .then(answers => {
             var {name, id, email, school} = answers;
-            var intern = Intern(name, id, email, school);
-
+            var intern = new Intern(name, id, email, school);
+            teamMember.push(intern);
+            createTeam();
         })
 
 }
