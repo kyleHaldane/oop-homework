@@ -44,8 +44,8 @@ function mainApp() {
             var { name, id, email, officeNumber } = answers;
             var manager = new Manager(name, id, email, officeNumber);
             
-            //Adds the managert to the team array
-            teamMember.push(manager);
+            //Adds the manager card to the team array
+            teamMember.push(managerCard(manager));
 
             //Initiates the prompt to ask for more team members
             createTeam();
@@ -147,7 +147,7 @@ function getIntern() {
         ])
         .then(answers => {
             var {name, id, email, school} = answers;
-            teamMember.push(new Intern(name, id, email, school));
+            teamMember.push(internCard(new Intern(name, id, email, school)));
             createTeam();
         })
 
