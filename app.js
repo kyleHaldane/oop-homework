@@ -47,7 +47,7 @@ function mainApp() {
             //Adds the managert to the team array
             teamMember.push(manager);
 
-            //Initiates teh prompt to ask for more team members
+            //Initiates the prompt to ask for more team members
             createTeam();
         })
 
@@ -86,7 +86,6 @@ function createTeam() {
 
 // a function that create an engineer
 function getEngineer() {
-
     inquirer
         .prompt([
             {
@@ -113,7 +112,7 @@ function getEngineer() {
         ])
         .then(answers => {
             var {name, id, email, github} = answers;
-            var engineer = new Engineer(name, id, email, github);
+            var engineer = engineerCard(new Engineer(name, id, email, github)); 
             teamMember.push(engineer);
             createTeam();
         })
@@ -148,14 +147,14 @@ function getIntern() {
         ])
         .then(answers => {
             var {name, id, email, school} = answers;
-            var intern = new Intern(name, id, email, school);
-            teamMember.push(intern);
+            teamMember.push(new Intern(name, id, email, school));
             createTeam();
         })
 
 }
 
 function buildTeam() {
+    
     fs.writeFileSync(outputPath, mainRender(teamMember), "utf-8");
 }
 
